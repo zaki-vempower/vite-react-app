@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { handleDrawer } from '../store/actions';
 
 
-const ADrawer = ({isOpen,setOpen}) => {
+const ADrawer = () => {
   const dispatch = useDispatch()
   const {  drawerHandle } = useSelector(state => state.userReducer);
   return (
