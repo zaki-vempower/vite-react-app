@@ -20,7 +20,7 @@ const AtlassianProductHome = () => (
 
 const getuserState = () => globalState()['userReducer']?.drawerHandle ?? false
 
-const DefaultSignIn = () => <SignIn href="#" tooltip="Sign in"/>;
+const DefaultSignIn = ({handleDialog}) => <SignIn href="#" tooltip="Sign in" onClick={handleDialog} />;
 
 const DefaultAppSwitcher = () => <AppSwitcher tooltip="Switch to..." onClick={() => globalDispatch(handleDrawer(!getuserState()))} />;
 
@@ -35,7 +35,7 @@ const Navbar = (props) => (
       <PrimaryButton>Repositories</PrimaryButton>,
     ]}
     renderAppSwitcher={DefaultAppSwitcher}
-    renderSignIn={DefaultSignIn}
+    renderSignIn={() => <DefaultSignIn handleDialog={props.handleDialog} />}
     renderProductHome={AtlassianProductHome}
   />
 );
