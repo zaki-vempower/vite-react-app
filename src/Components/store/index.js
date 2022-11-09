@@ -1,6 +1,6 @@
 import { compose, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import { persistStore, persistReducer } from 'redux-persist'
+
 
 import reducers from './reducers'
 // import { appliedMiddlware } from './middleware/middleware'
@@ -22,6 +22,9 @@ export const store = configureStore({
   reducer: reducers,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk)
 })
+
+export  const globalDispatch = store.dispatch;
+export const globalState = store.getState;
 
 
 

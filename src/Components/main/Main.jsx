@@ -1,7 +1,7 @@
 import { Button } from '@mui/material'
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import ADrawer from '../Drawer'
+import {ADrawer} from '../Drawer'
 import Navbar from '../Navbar'
 import { apiLogin } from '../store/actions'
 
@@ -14,13 +14,13 @@ const [open, setOpen] = React.useState(false);
   }
 
   return (
-    <>
-    <Navbar onClicked = {() => setOpen(prev => !prev)} />
-    <ADrawer isOpen = {open} setOpen={(bool) => setOpen(bool)} />
+    <div>
+    <Navbar  />
+    <ADrawer />
     <div>Hello Wolrd</div>
     <Button  onClick={someClicker}>
       Click Me
     </Button>
-    </>
+    </div>
   )
 }

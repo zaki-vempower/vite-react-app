@@ -1,4 +1,4 @@
-import { API_LOGIN } from "../actionTypes";
+import { API_LOGIN, OPEN_DRAWER } from "../actionTypes";
 
 
 
@@ -10,6 +10,14 @@ export function apiLogin(data) {
             type:API_LOGIN,
             data
         })
+    }
+    
+}
+
+export function handleDrawer(bool) {
+    return {
+        type: OPEN_DRAWER,
+        bool
     }
     
 }

@@ -1,15 +1,9 @@
 import {
-    API_LOGIN
+    API_LOGIN, OPEN_DRAWER
   } from '../actionTypes'
   
   const initialState = {
-    loggedInData: {},
-    isLoading: false,
-    isFailed: false,
-    erroeMessage: '',
-    access_Token: '',
-    data: '',
-    fcmToken: null,
+    drawerHandle: false,
     isCustomView: false,
     showLogin: true,
     deepLink: null,
@@ -22,11 +16,16 @@ import {
   export const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case API_LOGIN:
-            console.log('acgionnnn',action)
-            return {
-                ...state,
-                showLogin: action.data
-            }
+          return {
+            ...state,
+            showLogin: action.data
+          }
+          case OPEN_DRAWER:
+          console.log('acgionnnn',action)
+          return {
+            ...state,
+            drawerHandle: action.bool
+          }
   
       default:
         return state

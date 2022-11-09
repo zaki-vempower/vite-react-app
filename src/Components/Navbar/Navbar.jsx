@@ -9,13 +9,20 @@ import {
   PrimaryButton,
   PrimaryDropdownButton,
   ProductHome,
+  SignIn
 } from '@atlaskit/atlassian-navigation';
+import { globalDispatch, globalState } from '../store';
+import { handleDrawer } from '../store/actions';
 
 const AtlassianProductHome = () => (
   <ProductHome icon={AtlassianIcon} logo={AtlassianLogo} />
 );
 
-const DefaultAppSwitcher = (props) => <AppSwitcher tooltip="Switch to..." onClick={() => props.clicked()} />;
+const getuserState = () => globalState()['userReducer']?.drawerHandle ?? false
+
+const DefaultSignIn = () => <SignIn href="#" tooltip="Sign in"/>;
+
+const DefaultAppSwitcher = () => <AppSwitcher tooltip="Switch to..." onClick={() => globalDispatch(handleDrawer(!getuserState()))} />;
 
 
 const Navbar = (props) => (
@@ -27,7 +34,8 @@ const Navbar = (props) => (
       <PrimaryDropdownButton>Projects</PrimaryDropdownButton>,
       <PrimaryButton>Repositories</PrimaryButton>,
     ]}
-    renderAppSwitcher={() => <DefaultAppSwitcher clicked = {props.onClicked} />}
+    renderAppSwitcher={DefaultAppSwitcher}
+    renderSignIn={DefaultSignIn}
     renderProductHome={AtlassianProductHome}
   />
 );

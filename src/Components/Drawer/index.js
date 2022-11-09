@@ -1,3 +1,1 @@
-import ADrawer from "./Drawer";
-
-export default ADrawer
+export { default as ADrawer } from './Drawer'

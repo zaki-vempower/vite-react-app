@@ -3,23 +3,25 @@ import React, { useState } from 'react';
 
 import Button from '@atlaskit/button/standard-button';
 
-import Drawer from '@mui/material/Drawer';
-import Lorem from 'react-lorem-component';
+import Drawer from '@atlaskit/drawer';
 import { Box } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { handleDrawer } from '../store/actions';
 
 
-const ADrawer = (props) => {
-  console.log('sdsdd',props)
+const ADrawer = ({isOpen,setOpen}) => {
+  const dispatch = useDispatch()
+  const {  drawerHandle } = useSelector(state => state.userReducer);
   return (
-    <>
-      <Drawer onClose={() => props.setOpen(false)} anchor={'left'} open={props.isOpen}>
-      <Box sx={{ width: 250 }} >
+    <div>
+      <Drawer onClose={() => dispatch(handleDrawer(false))} isOpen={drawerHandle}>
+      <Box>
         <h1>
           HELLO WORLD
         </h1>
       </Box>
       </Drawer>
-    </>
+    </div>
   );
 };
 
