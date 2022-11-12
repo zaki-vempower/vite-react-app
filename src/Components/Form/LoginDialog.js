@@ -6,6 +6,8 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useForm } from "react-hook-form";
 import { Button, TextField } from '@mui/material';
+import { GoogleLogin } from '@react-oauth/google';
+
 
 export default function LoginDialog(props) {
   const {open = false,handleClose} = props
@@ -43,6 +45,14 @@ export default function LoginDialog(props) {
         {...register("password", { required: true })}
       />
       </form>
+      <GoogleLogin
+  onSuccess={credentialResponse => {
+    console.log(credentialResponse);
+  }}
+  onError={() => {
+    console.log('Login Failed');
+  }}
+/>;
     </DialogContent>
     <DialogActions>
       <Button onClick={handleClose}>Cancel</Button>

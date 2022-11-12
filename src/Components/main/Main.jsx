@@ -5,6 +5,7 @@ import {ADrawer} from '../Drawer'
 import { LoginDialog } from '../Form'
 import Navbar from '../Navbar'
 import { apiLogin } from '../store/actions'
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 export default function Main() {
 const dispatch = useDispatch()
@@ -16,6 +17,7 @@ const [open, setOpen] = React.useState(false);
   
   return (
     <div>
+    <GoogleOAuthProvider clientId="736054641474-a29i8vnimmqjplifk89nmvu73dpeh22t.apps.googleusercontent.com">
     <Navbar handleDialog = {() => setOpen(prev => !prev)}  />
     <ADrawer />
     <LoginDialog open = {open} handleClose = {() => setOpen(false)} />
@@ -23,6 +25,8 @@ const [open, setOpen] = React.useState(false);
     <Button  onClick={someClicker}>
       Click Me
     </Button>
+
+    </GoogleOAuthProvider>;
     </div>
   )
 }
